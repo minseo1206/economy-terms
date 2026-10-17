@@ -13,7 +13,7 @@
 :root{
   color-scheme:light;
   --paper:#ffffff; --ink:#1b1d22; --body:#33363d; --sub:#7a7e88; --hair:#e6e7ea; --edge:#e0e0e4;
-  --accent:#2f5b86; --accent-soft:#eef3f8;
+  --accent:#2f5b86; --accent-soft:#eef3f8; --hl:#cfe0f3;
   --font:"NEXON Lv1 Gothic","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --W:860px; --H:1216px; --s:1;
 }
@@ -38,6 +38,7 @@ body{background:#f6f6f7;color:var(--ink);font-family:var(--font);margin:0;-webki
 .no{font-size:calc(var(--s) * 11px);color:var(--sub);font-variant-numeric:tabular-nums;padding-top:calc(var(--s) * 5px)}
 .bd{min-width:0;display:flex;flex-direction:column;gap:calc(var(--s) * 2px)}
 .tt{font-size:calc(var(--s) * 18px);font-weight:700;line-height:1.3;word-break:keep-all;color:var(--ink);letter-spacing:-.3px}
+.tt span{background:linear-gradient(transparent 55%,var(--hl) 55%,var(--hl) 92%,transparent 92%);padding:0 2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .df{font-size:calc(var(--s) * 13.5px);line-height:1.42;color:var(--body);word-break:keep-all;overflow-wrap:anywhere}
 .ev ul{list-style:none;margin:0;padding:0;display:grid;gap:calc(var(--s) * 1px)}
 .ev li{font-size:calc(var(--s) * 13px);line-height:1.42;color:var(--sub);word-break:keep-all;overflow-wrap:anywhere;padding-left:1em;text-indent:-1em}
@@ -174,7 +175,7 @@ D.forEach((d,i)=>{
   blocks.push(`<div class="ev">
     <span class="no">${String(i+1).padStart(2,"0")}</span>
     <div class="bd">
-      <div class="tt">${esc(term)}</div>
+      <div class="tt"><span>${esc(term)}</span></div>
       <div class="df">${esc(def)}</div>
       ${notes.length?`<ul>${notes.map(n=>n.startsWith("↔ ")?`<li class="vs"><i>반대</i>${esc(n.slice(2))}</li>`:`<li>${line(n)}</li>`).join("")}</ul>`:""}
     </div>
